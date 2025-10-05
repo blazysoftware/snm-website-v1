@@ -1,0 +1,193 @@
+{
+  "services": [
+    {
+      "type": "app",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "chatwoot",
+        "source": {
+          "type": "image",
+          "image": "chatwoot/chatwoot:v3.16.0"
+        },
+        "env": "SECRET_KEY_BASE=576539402188ebb43de8ecde867031ac\nFRONTEND_URL=https://$(PRIMARY_DOMAIN)\nDEFAULT_LOCALE=en\nFORCE_SSL=false\nENABLE_ACCOUNT_SIGNUP=true\nREDIS_URL=redis://default:27e740b686971f63bb8fcec45e264f3b@$(PROJECT_NAME)_redis:6379\nREDIS_PASSWORD=27e740b686971f63bb8fcec45e264f3b\nREDIS_OPENSSL_VERIFY_MODE=none\nPOSTGRES_DATABASE=chatwoot\nPOSTGRES_HOST=$(PROJECT_NAME)_postgres\nPOSTGRES_USERNAME=postgres\nPOSTGRES_PASSWORD=6dd0803691e3b54643092a0fdfd59f81\nRAILS_MAX_THREADS=5\nNODE_ENV=production\nRAILS_ENV=production\nINSTALLATION_ENV=docker\nTRUSTED_PROXIES=*",
+        "deploy": {
+          "replicas": 1,
+          "command": "bundle exec rails db:chatwoot_prepare && bundle exec rails s -p 3000 -b 0.0.0.0",
+          "zeroDowntime": true
+        },
+        "domains": [
+          {
+            "host": "chat.blazysoftware.com.br",
+            "https": true,
+            "port": 3000,
+            "path": "/",
+            "wildcard": false,
+            "internalProtocol": "http"
+          }
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "data",
+            "mountPath": "/data/storage"
+          },
+          {
+            "type": "volume",
+            "name": "app",
+            "mountPath": "/app/storage"
+          }
+        ]
+      }
+    },
+    {
+      "type": "app",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "chatwoot-sidekiq",
+        "source": {
+          "type": "image",
+          "image": "chatwoot/chatwoot:v3.16.0"
+        },
+        "env": "SECRET_KEY_BASE=576539402188ebb43de8ecde867031ac\nFRONTEND_URL=https://$(PRIMARY_DOMAIN)\nDEFAULT_LOCALE=en\nFORCE_SSL=false\nENABLE_ACCOUNT_SIGNUP=true\nREDIS_URL=redis://default:27e740b686971f63bb8fcec45e264f3b@$(PROJECT_NAME)_redis:6379\nREDIS_PASSWORD=27e740b686971f63bb8fcec45e264f3b\nREDIS_OPENSSL_VERIFY_MODE=none\nPOSTGRES_DATABASE=chatwoot\nPOSTGRES_HOST=$(PROJECT_NAME)_postgres\nPOSTGRES_USERNAME=postgres\nPOSTGRES_PASSWORD=6dd0803691e3b54643092a0fdfd59f81\nRAILS_MAX_THREADS=5\nNODE_ENV=production\nRAILS_ENV=production\nINSTALLATION_ENV=docker\nTRUSTED_PROXIES=*",
+        "deploy": {
+          "replicas": 1,
+          "command": "bundle exec sidekiq -C config/sidekiq.yml",
+          "zeroDowntime": true
+        },
+        "mounts": [
+          {
+            "type": "bind",
+            "hostPath": "/etc/easypanel/projects/$(PROJECT_NAME)/chatwoot/volumes/app",
+            "mountPath": "/app/storage"
+          }
+        ]
+      }
+    },
+    {
+      "type": "app",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "evolution",
+        "source": {
+          "type": "image",
+          "image": "atendai/evolution-api:v2.2.0"
+        },
+        "env": "SERVER_URL=https://$(PRIMARY_DOMAIN) \nDEL_INSTANCE=false \nDEL_TEMP_INSTANCES=false \nPROVIDER_ENABLED=false \nPROVIDER_HOST=127.0.0.1 \nPROVIDER_PORT=5656 \nPROVIDER_PREFIX=evolution_v2 \nDATABASE_ENABLED=true \nDATABASE_PROVIDER=postgresql \nDATABASE_CONNECTION_URI=postgres://postgres:6dd0803691e3b54643092a0fdfd59f81@$(PROJECT_NAME)_postgres:5432/evolution?sslmode=disable \nDATABASE_CONNECTION_CLIENT_NAME=evolution_v2 \nCACHE_REDIS_ENABLED=true \nCACHE_REDIS_URI=redis://default:27e740b686971f63bb8fcec45e264f3b@$(PROJECT_NAME)_redis:6379 \nCACHE_REDIS_PREFIX_KEY=evolution_v2 \nCACHE_REDIS_SAVE_INSTANCES=false \nCACHE_LOCAL_ENABLED=false \nS3_ENABLED=false \nS3_ACCESS_KEY= \nS3_SECRET_KEY= \nRABBITMQ_ENABLED=false \nRABBITMQ_URI=amqp://admin:admin@rabbitmq:5672/default \nRABBITMQ_EXCHANGE_NAME=evolution_v2 \nRABBITMQ_GLOBAL_ENABLED=false \nRABBITMQ_EVENTS_APPLICATION_STARTUP=false \nRABBITMQ_EVENTS_INSTANCE_CREATE=false \nRABBITMQ_EVENTS_INSTANCE_DELETE=false \nRABBITMQ_EVENTS_QRCODE_UPDATED=false \nRABBITMQ_EVENTS_MESSAGES_SET=false \nRABBITMQ_EVENTS_MESSAGES_UPSERT=true \nRABBITMQ_EVENTS_MESSAGES_EDITED=false \nRABBITMQ_EVENTS_MESSAGES_UPDATE=false \nRABBITMQ_EVENTS_MESSAGES_DELETE=false \nRABBITMQ_EVENTS_SEND_MESSAGE=false \nRABBITMQ_EVENTS_CONTACTS_SET=false \nRABBITMQ_EVENTS_CONTACTS_UPSERT=false \nRABBITMQ_EVENTS_CONTACTS_UPDATE=false \nRABBITMQ_EVENTS_PRESENCE_UPDATE=false \nRABBITMQ_EVENTS_CHATS_SET=false \nRABBITMQ_EVENTS_CHATS_UPSERT=false \nRABBITMQ_EVENTS_CHATS_UPDATE=false \nRABBITMQ_EVENTS_CHATS_DELETE=false \nRABBITMQ_EVENTS_GROUPS_UPSERT=false \nRABBITMQ_EVENTS_GROUP_UPDATE=false \nRABBITMQ_EVENTS_GROUP_PARTICIPANTS_UPDATE=false \nRABBITMQ_EVENTS_CONNECTION_UPDATE=true \nRABBITMQ_EVENTS_CALL=false \nRABBITMQ_EVENTS_TYPEBOT_START=false \nRABBITMQ_EVENTS_TYPEBOT_CHANGE_STATUS=false \nSQS_ENABLED=false \nSQS_ACCESS_KEY_ID= \nSQS_SECRET_ACCESS_KEY= \nSQS_ACCOUNT_ID= \nSQS_REGION= \nWEBSOCKET_ENABLED=false \nWEBSOCKET_GLOBAL_EVENTS=false \nWA_BUSINESS_TOKEN_WEBHOOK=evolution \nWA_BUSINESS_URL=https://graph.facebook.com \nWA_BUSINESS_VERSION=v20.0 \nWA_BUSINESS_LANGUAGE=pt_BR \nWEBHOOK_GLOBAL_URL='' \nWEBHOOK_GLOBAL_ENABLED=false \nWEBHOOK_GLOBAL_WEBHOOK_BY_EVENTS=false \nWEBHOOK_EVENTS_APPLICATION_STARTUP=false \nWEBHOOK_EVENTS_QRCODE_UPDATED=true \nWEBHOOK_EVENTS_MESSAGES_SET=true \nWEBHOOK_EVENTS_MESSAGES_UPSERT=true \nWEBHOOK_EVENTS_MESSAGES_EDITED=true \nWEBHOOK_EVENTS_MESSAGES_UPDATE=true \nWEBHOOK_EVENTS_MESSAGES_DELETE=true \nWEBHOOK_EVENTS_SEND_MESSAGE=true \nWEBHOOK_EVENTS_CONTACTS_SET=true \nWEBHOOK_EVENTS_CONTACTS_UPSERT=true \nWEBHOOK_EVENTS_CONTACTS_UPDATE=true \nWEBHOOK_EVENTS_PRESENCE_UPDATE=true \nWEBHOOK_EVENTS_CHATS_SET=true \nWEBHOOK_EVENTS_CHATS_UPSERT=true \nWEBHOOK_EVENTS_CHATS_UPDATE=true \nWEBHOOK_EVENTS_CHATS_DELETE=true \nWEBHOOK_EVENTS_GROUPS_UPSERT=true \nWEBHOOK_EVENTS_GROUPS_UPDATE=true \nWEBHOOK_EVENTS_GROUP_PARTICIPANTS_UPDATE=true \nWEBHOOK_EVENTS_CONNECTION_UPDATE=true \nWEBHOOK_EVENTS_LABELS_EDIT=true \nWEBHOOK_EVENTS_LABELS_ASSOCIATION=true \nWEBHOOK_EVENTS_CALL=true \nWEBHOOK_EVENTS_TYPEBOT_START=false \nWEBHOOK_EVENTS_TYPEBOT_CHANGE_STATUS=false \nWEBHOOK_EVENTS_ERRORS=false \nWEBHOOK_EVENTS_ERRORS_WEBHOOK= \nCONFIG_SESSION_PHONE_CLIENT=blazysoftware \nCONFIG_SESSION_PHONE_NAME=Chrome \nCONFIG_SESSION_PHONE_VERSION=2.3000.1015901307 \nQRCODE_LIMIT=30 \nTYPEBOT_ENABLED=true \nTYPEBOT_API_VERSION=latest \nOPENAI_ENABLED=true \nDIFY_ENABLED=true \nCHATWOOT_ENABLED=true \nCHATWOOT_MESSAGE_READ=true \nCHATWOOT_IMPORT_DATABASE_CONNECTION_URI=postgres://postgres:6dd0803691e3b54643092a0fdfd59f81@$(PROJECT_NAME)_postgres:5432/$(PROJECT_NAME)?sslmode=disable \nCHATWOOT_IMPORT_PLACEHOLDER_MEDIA_MESSAGE=true \nS3_BUCKET=evolution \nS3_PORT=443 \nS3_ENDPOINT=files.site.com \nS3_USE_SSL=true \nAUTHENTICATION_API_KEY=WuBEoz4S2ggRUOF8zsztcdW0rtemgmcX \nAUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES=true \nLANGUAGE=pt_BR",
+        "deploy": {
+          "replicas": 1,
+          "command": null,
+          "zeroDowntime": true
+        },
+        "domains": [
+          {
+            "host": "evolution.blazysoftware.com.br",
+            "https": true,
+            "port": 8080,
+            "path": "/",
+            "wildcard": false,
+            "internalProtocol": "http"
+          }
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "evolution_instances",
+            "mountPath": "/evolution/instances"
+          }
+        ]
+      }
+    },
+    {
+      "type": "app",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "n8n_editor",
+        "source": {
+          "type": "image",
+          "image": "n8nio/n8n:1.81.4"
+        },
+        "env": "DB_POSTGRESDB_DATABASE=n8n\r\nDB_POSTGRESDB_HOST=$(PROJECT_NAME)_postgres\r\nDB_POSTGRESDB_PASSWORD=6dd0803691e3b54643092a0fdfd59f81\r\nDB_POSTGRESDB_PORT=5432\r\nDB_POSTGRESDB_USER=postgres\r\nDB_TYPE=postgresdb\r\nQUEUE_BULL_REDIS_HOST=$(PROJECT_NAME)_redis\r\nQUEUE_BULL_REDIS_PASSWORD=27e740b686971f63bb8fcec45e264f3b\r\nQUEUE_BULL_REDIS_PORT=6379\r\nEXECUTIONS_MODE=queue\r\nEXECUTIONS_DATA_MAX_AGE=336\r\nEXECUTIONS_DATA_PRUNE=true\r\nGENERIC_TIMEZONE=America/Sao_Paulo\r\nN8N_DIAGNOSTICS_ENABLED=false\r\nN8N_EDITOR_BASE_URL=https://workflow.blazysoftware.com.br/\r\nN8N_ENCRYPTION_KEY=f0vVK46qEZFWlgESWklDSohrssa3Xry90b8e\r\nN8N_HOST=workflow.blazysoftware.com.br/\r\nN8N_PROTOCOL=https\r\nNODE_ENV=production\r\nNODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,moment-with-locales\r\nN8N_LOG_LEVEL=debug\r\nN8N_LOG_OUTPUT=file,console\r\nN8N_LOG_FILE_LOCATION=/home/node/.n8n/logs/n8n-01.log\r\nTZ=America/Sao_Paulo\r\nWEBHOOK_URL=https://workflow.blazysoftware.com.br/",
+        "deploy": {
+          "replicas": 1,
+          "command": "n8n start",
+          "zeroDowntime": true
+        },
+        "domains": [
+          {
+            "host": "workflow.blazysoftware.com.br",
+            "https": true,
+            "port": 5678,
+            "path": "/",
+            "wildcard": false,
+            "internalProtocol": "http"
+          }
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "data",
+            "mountPath": "/home/node/.n8n"
+          }
+        ]
+      }
+    },
+    {
+      "type": "app",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "n8n_webhook",
+        "source": {
+          "type": "image",
+          "image": "n8nio/n8n:1.81.4"
+        },
+        "env": "DB_POSTGRESDB_DATABASE=n8n\r\nDB_POSTGRESDB_HOST=$(PROJECT_NAME)_postgres\r\nDB_POSTGRESDB_PASSWORD=6dd0803691e3b54643092a0fdfd59f81\r\nDB_POSTGRESDB_PORT=5432\r\nDB_POSTGRESDB_USER=postgres\r\nDB_TYPE=postgresdb\r\nQUEUE_BULL_REDIS_HOST=$(PROJECT_NAME)_redis\r\nQUEUE_BULL_REDIS_PASSWORD=27e740b686971f63bb8fcec45e264f3b\r\nQUEUE_BULL_REDIS_PORT=6379\r\nEXECUTIONS_MODE=queue\r\nEXECUTIONS_DATA_MAX_AGE=336\r\nEXECUTIONS_DATA_PRUNE=true\r\nGENERIC_TIMEZONE=America/Sao_Paulo\r\nN8N_DIAGNOSTICS_ENABLED=false\r\nN8N_EDITOR_BASE_URL=https://workflow.blazysoftware.com.br/\r\nN8N_ENCRYPTION_KEY=f0vVK46qEZFWlgESWklDSohrssa3Xry90b8e\r\nN8N_HOST=workflow.blazysoftware.com.br/\r\nN8N_PROTOCOL=https\r\nNODE_ENV=production\r\nNODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,moment-with-locales\r\nN8N_LOG_LEVEL=debug\r\nN8N_LOG_OUTPUT=file,console\r\nN8N_LOG_FILE_LOCATION=/home/node/.n8n/logs/n8n-01.log\r\nTZ=America/Sao_Paulo\r\nWEBHOOK_URL=https://workflow.blazysoftware.com.br/",
+        "deploy": {
+          "replicas": 1,
+          "command": "n8n webhook",
+          "zeroDowntime": true
+        },
+        "domains": [
+          {
+            "host": "webhook.blazysoftware.com.br",
+            "https": true,
+            "port": 5678,
+            "path": "/",
+            "wildcard": false,
+            "internalProtocol": "http"
+          }
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "data",
+            "mountPath": "/home/node/.n8n"
+          }
+        ]
+      }
+    },
+    {
+      "type": "app",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "n8n_worker",
+        "source": {
+          "type": "image",
+          "image": "n8nio/n8n:1.81.4"
+        },
+        "env": "DB_POSTGRESDB_DATABASE=n8n\r\nDB_POSTGRESDB_HOST=$(PROJECT_NAME)_postgres\r\nDB_POSTGRESDB_PASSWORD=6dd0803691e3b54643092a0fdfd59f81\r\nDB_POSTGRESDB_PORT=5432\r\nDB_POSTGRESDB_USER=postgres\r\nDB_TYPE=postgresdb\r\nQUEUE_BULL_REDIS_HOST=$(PROJECT_NAME)_redis\r\nQUEUE_BULL_REDIS_PASSWORD=27e740b686971f63bb8fcec45e264f3b\r\nQUEUE_BULL_REDIS_PORT=6379\r\nEXECUTIONS_MODE=queue\r\nEXECUTIONS_DATA_MAX_AGE=336\r\nEXECUTIONS_DATA_PRUNE=true\r\nGENERIC_TIMEZONE=America/Sao_Paulo\r\nN8N_DIAGNOSTICS_ENABLED=false\r\nN8N_EDITOR_BASE_URL=https://workflow.blazysoftware.com.br/\r\nN8N_ENCRYPTION_KEY=f0vVK46qEZFWlgESWklDSohrssa3Xry90b8e\r\nN8N_HOST=workflow.blazysoftware.com.br/\r\nN8N_PROTOCOL=https\r\nNODE_ENV=production\r\nNODE_FUNCTION_ALLOW_EXTERNAL=moment,lodash,moment-with-locales\r\nN8N_LOG_LEVEL=debug\r\nN8N_LOG_OUTPUT=file,console\r\nN8N_LOG_FILE_LOCATION=/home/node/.n8n/logs/n8n-01.log\r\nTZ=America/Sao_Paulo\r\nWEBHOOK_URL=https://workflow.blazysoftware.com.br/",
+        "deploy": {
+          "replicas": 1,
+          "command": "n8n worker --concurrency=5",
+          "zeroDowntime": true
+        },
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "data",
+            "mountPath": "/home/node/.n8n"
+          }
+        ]
+      }
+    }
+  ]
+}

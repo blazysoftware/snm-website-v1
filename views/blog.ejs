@@ -1,0 +1,215 @@
+<%- include('partials/header') %>
+
+<!-- Page Header -->
+<section class="page-header bg-primary text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold mb-3">📝 Blog</h1>
+                <p class="lead">Acompanhe nossas novidades e artigos</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Post -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card featured-post shadow">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <div class="card-img-left bg-gradient-primary d-flex align-items-center justify-content-center text-white" style="height: 300px;">
+                                <i class="display-1">⭐</i>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body p-4 d-flex flex-column h-100">
+                                <div class="mb-2">
+                                    <span class="badge bg-primary">Destaque</span>
+                                    <small class="text-muted ms-2">05/10/2025</small>
+                                </div>
+                                <h3 class="card-title fw-bold">Post em Destaque</h3>
+                                <p class="card-text flex-grow-1">
+                                    Este é nosso post em destaque da semana! Aqui falamos sobre as principais 
+                                    tendências do mercado e como nossa empresa está se adaptando às mudanças.
+                                </p>
+                                <div class="mt-auto">
+                                    <button class="btn btn-primary">Ler Mais</button>
+                                    <small class="text-muted ms-3">Por: Editor Chefe</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Posts Grid -->
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="fw-bold mb-4">Últimos Posts</h2>
+                
+                <div class="row g-4">
+                    <% posts.forEach(post => { %>
+                    <div class="col-12">
+                        <article class="card shadow-sm">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div class="card-img-left bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="display-4 text-muted">📄</i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <small class="text-muted">
+                                                <i>📅</i> <%= post.data %> | 
+                                                <i>👤</i> <%= post.autor %>
+                                            </small>
+                                            <span class="badge bg-secondary">Artigo</span>
+                                        </div>
+                                        <h5 class="card-title">
+                                            <a href="#" class="text-decoration-none"><%= post.titulo %></a>
+                                        </h5>
+                                        <p class="card-text"><%= post.resumo %></p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a href="#" class="btn btn-outline-primary btn-sm">Ler Mais</a>
+                                            <div class="text-muted small">
+                                                <i>👁️</i> 245 visualizações | 
+                                                <i>💬</i> 8 comentários
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <% }) %>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Blog pagination" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Próximo</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 20px;">
+                    <!-- Search -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">🔍 Buscar no Blog</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Digite sua busca...">
+                                <button class="btn btn-primary" type="button">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">📂 Categorias</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#" class="text-decoration-none">Tecnologia <span class="badge bg-light text-dark">12</span></a></li>
+                                <li><a href="#" class="text-decoration-none">Negócios <span class="badge bg-light text-dark">8</span></a></li>
+                                <li><a href="#" class="text-decoration-none">Inovação <span class="badge bg-light text-dark">6</span></a></li>
+                                <li><a href="#" class="text-decoration-none">Dicas <span class="badge bg-light text-dark">15</span></a></li>
+                                <li><a href="#" class="text-decoration-none">Novidades <span class="badge bg-light text-dark">9</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Recent Posts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">🔥 Posts Populares</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                        <i>📖</i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">
+                                        <a href="#" class="text-decoration-none">Como melhorar sua produtividade</a>
+                                    </h6>
+                                    <small class="text-muted">28/09/2025</small>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                        <i>💡</i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">
+                                        <a href="#" class="text-decoration-none">5 tendências para 2025</a>
+                                    </h6>
+                                    <small class="text-muted">25/09/2025</small>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                        <i>🚀</i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">
+                                        <a href="#" class="text-decoration-none">Inovações que mudam o mundo</a>
+                                    </h6>
+                                    <small class="text-muted">22/09/2025</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">📧 Newsletter</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Receba nossas novidades por email!</p>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Seu e-mail">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Inscrever-se</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

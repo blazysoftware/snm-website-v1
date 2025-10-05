@@ -1,0 +1,22 @@
+{
+  "services": [
+    {
+      "type": "postgres",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "postgres",
+        "image": "bitnami/postgresql:16",
+        "password": "6dd0803691e3b54643092a0fdfd59f81"
+      }
+    },
+    {
+      "type": "redis",
+      "data": {
+        "projectName": "$(PROJECT_NAME)",
+        "serviceName": "redis",
+        "image": "redis:7",
+        "password": "27e740b686971f63bb8fcec45e264f3b"
+      }
+    }
+  ]
+}

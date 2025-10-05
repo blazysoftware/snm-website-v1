@@ -1,0 +1,252 @@
+================================
+Vendedor: "Fernando Saturnino"
+Telefone: "+5562991191766"
+atende as cidades de: 
+GO - Goiânia
+GO - Aparecide de Goiânia
+GO - Trindade
+
+================================
+Vendedor: "Cayo Xavier"
+Telefone: "+5562981748516"
+atende as cidades de:
+GO - Vila rica
+GO - Neropolis
+GO - Goialândia
+GO - Anápolis
+GO - Goianapolis
+GO - João Dutra
+GO - Abadiania
+GO - Três veredas
+GO - Alvorada
+GO - Alexânia
+GO - Serra do ouro
+GO - Engenho das lajes
+GO - Santo Antônio do descoberto
+GO - Águas lindas
+GO - Valparaiso
+GO - Luziânia
+GO - Cidade Ocidental
+DF - Samambaia norte
+DF - Ceilândia Sul
+DF - Ceilândia Norte
+DF - Recanto das emas
+DF - Novo Gama
+DF - Riacho Fundo
+
+================================
+Vendedor: "Adriana Gonçalves"
+Telefone: "+5562994186505" 
+atende as cidades de:
+BA - Roda Velha
+BA - São Desidério
+BA - Luís Eduardo Magalhães
+BA - Barreiras
+BA - Riachão das Neves
+BA - Baianópolis
+BA - Cristópolis
+BA - Cotegipe
+BA - Correntina
+BA - Santa Maria da Vitória
+BA - Wanderley
+BA - Formosa do Rio Preto
+BA - Santa Rita de Cássia
+
+================================
+Vendedor: "João Francisco"
+Telefone: "+5562992516561"
+atende as cidades de:
+GO - Palmeiras de Goiás
+GO - Nazário
+GO - Firminópolis
+GO - São Luiz dos Montes Belos
+GO - Aurilândia
+GO - Fazenda Nova
+GO - Israelândia
+GO - Iporá
+GO - Amorinópolis
+GO - Montes Claros
+GO - Acreúna
+GO - Santa Helena de Goiás
+GO - Quirinópolis
+GO - Varjão
+GO - Guapó
+GO - São Simão
+GO - Rio Verde
+GO - Bom Jardim de Goiás
+GO - Aragarças
+GO - Mossâmedes
+MS - Chapadão do Sul
+MS - Rio Verde de Mato Grosso
+GO - Itapirapuã
+GO - Colinas do Sul
+GO - Alto Paraíso de Goiás
+GO - Nova Roma
+GO - Água Limpa
+GO - Teresina de Goiás
+GO - Monte Alegre de Goiás
+GO - Campos Belos de Goiás
+GO - Divinópolis de Goiás
+GO - Alvorada de Goiás
+GO - Flores de Goiás
+GO - Bonópolis
+GO - Uruaçu
+GO - Orizona
+GO - Formoso
+GO - Nova Iguaçu de Goiás
+GO - Alto Horizonte
+GO - Santa Tereza de Goiás
+GO - Rianápolis
+GO - Santa Terezinha de Goiás
+GO - São Miguel do Araguaia
+GO - Cavalcante
+GO - Monte Alegre de Goiás
+GO - São Domingos
+GO - Iaciara
+GO - Posse
+GO - Mambaí
+GO - São João d'Aliança
+GO - Formosa
+GO - Ponta Fria de Goiás
+GO - Cachoeira Dourada
+GO - Bom Jesus de Goiás
+GO - Cachoeira Alta
+GO - 
+GO - 
+
+================================
+Vendedor: "Leidimar Bento"
+Telefone: "+5562981426199"
+atende as cidades de:
+GO - Bonfinópolis
+GO - Leopoldo de Bulhões
+GO - Silvânia
+GO - Gameleira
+GO - Vianópolis
+GO - Orizona
+GO - Pires do Rio
+GO - Palmelo
+GO - Santa Cruz de Goiás
+GO - Cristianópolis
+MG - Passa Quatro
+GO - Goianápolis
+
+================================
+Vendedor: "Danilo Pires"
+Telefone: "+5562992694912"
+atende as cidades de:
+GO - Jataí
+GO - Goianésia
+GO - Serranópolis
+GO - Indiara
+GO - Edéia
+GO - Pontalina
+GO - Senador Canedo
+GO - Bela Vista de Goiás
+GO - Goianira
+GO - Abadia de Goiás
+GO - Brazabrantes
+GO - Inhumas
+GO - Itauçu
+GO - Itapuranga
+GO - São Francisco de Goiás
+GO - Jaraguá
+GO - Barro Alto
+GO - Uruaçu
+GO - Ceres
+GO - São Luís do Norte
+GO - Mineiros
+GO - Santa Rita do Araguaia
+GO - Hidrolândia
+GO - Piracanjuba
+GO - Professor Jamil
+GO - Morrinhos
+GO - Goiatuba
+GO - Itumbiara
+GO - Aloândia
+GO - Aragoiânia
+GO - Palmeiras de Goiás
+GO - Cesarina
+GO - Guapó
+MT - Alto Araguaia
+
+================================
+Vendedor: "Antenor"
+Telefone: "+5594984403887"
+atende as cidades de:
+PA - São Geraldo
+PA - Marabá
+PA - Altamira
+PA - Tucuruí
+PA - Novo Repartimento
+PA - Conceição
+PA - Redenção
+PA - Santana do Araguaia
+PA - Tocantins
+PA - Xambioá
+TO - Araguaína
+TO - Colinas do Tocantins
+TO - Guaraí
+TO - Miranorte
+TO - Palmas
+MA - Estreito
+MA - Imperatriz
+MA - Carolina
+MA - Balsas
+MA - São João dos Patos
+
+================================
+Vendedor: "Camilo"
+Telefone: "+5562991191766" 
+atende as cidades de:
+GO - Diorama
+GO - Montividiu
+GO - Caiapônia
+GO - Doverlândia
+GO - Piranhas
+GO - Bom Jardim de Goiás
+GO - Aragarças
+GO - Ponte Alta
+GO - Jussara
+
+================================
+Vendedor: "Jymmy"
+Telefone: "+5562991191766" 
+atende as cidades de:
+MT - Barra do Garças
+MT - General Carneiro
+MT - Nova Xavantina
+MT - Primavera do Leste
+MT - Rondonópolis
+MT - Paranatinga
+MT - Água Boa
+MT - Campinápolis
+MT - São Joaquim
+MT - Cocalinho
+MT - Canarana
+MT - Cascalheira
+MT - Querência
+MT - Porto Alegre do Norte
+MT - Confresa
+MT - Vila Rica
+MT - Serra Nova Dourada
+MT - Santo Antônio
+MT - São Félix
+
+================================
+Não temos rotas para: "Acre,Alagoas,Amapá,Amazonas,Ceará,Espírito Santo,
+Paraíba,Paraná,Pernambuco,Piauí,Rio de Janeiro,Rio Grande do Norte,Rio Grande do Sul,
+Rondônia,Roraima,Santa Catarina,São Paulo,Sergipe"
+
+================================
+Representante do Estado:
+BA - BAHIA - Adriana Gonçalves - +5562994186505
+DF - Distrito Federal - Cayo Xavier - +5562981748516
+MA - Maranhão - Danilo Pires - +5562992694912
+MT - Mato Grosso - Danilo Pires - +5562992694912
+MT - Mato Grosso - João Francisco - +5562992516561
+MS - Mato Grosso do Sul - Danilo Pires - +5562992694912
+MG - Minas Gerais - Wellington - +5534998038254
+PA - Pará - Antenor - +5594984403887
+TO - Tocantins - Antônio Dias - +5563992710494
+GO - Goiás - Fernando Saturnino - +5562991191766
